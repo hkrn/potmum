@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id].to_i)
   end
 
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
+
   def render_json(target, status: 200, message: '')
     render(json: {
                meta: {

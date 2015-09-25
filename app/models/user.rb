@@ -8,6 +8,7 @@
 #  stock_count :integer          default(0), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  role        :integer          default(0)
 #
 
 class User < ActiveRecord::Base
@@ -30,6 +31,8 @@ class User < ActiveRecord::Base
             length: 3..255,
             format: /\A.+@.+\z/,
             allow_blank: true
+
+  enum role: {member: 0, admin: 10}
 
   def to_param
     name

@@ -20,6 +20,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-slack'
 gem 'omniauth-twitter'
+gem 'cancancan'
 
 gem 'slack-api'
 

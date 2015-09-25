@@ -13,10 +13,11 @@ html
         .uk-navbar-flip
           ul.uk-navbar-nav
             - if current_user
-              li
-                a href=new_article_path(name: current_user.name)
-                  i.fa.fa-plus
-                  | &nbsp;新規作成
+              - if can? :create, current_user
+                li
+                  a href=new_article_path(name: current_user.name)
+                    i.fa.fa-plus
+                    | &nbsp;新規作成
               li.uk-parent data-uk-dropdown=true
                 a href='javascript:void(0)'
                   img.avatar-image src=current_user.decorate.avatar_url width=24 height=24
@@ -27,7 +28,11 @@ html
                         | マイページ
                     li
                       a href=setting_path
-                        | 設定
+                        | ユーザー設定
+                    - if can? :manage, current_user
+                      li
+                        a href='/admin'
+                          | グループ管理
                     li
                       a href=session_path data-method='delete'
                         | ログアウト
