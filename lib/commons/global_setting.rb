@@ -100,4 +100,8 @@ module GlobalSetting
     n = ENV['ATTACHMENT_FILE_S3_FORCE_PATH_STYLE']
     n ? (n.to_i > 0) : nil
   end
+
+  def self.twitter_card_site
+    ENV['TWITTER_CARD_SITE']
+  end
 end
